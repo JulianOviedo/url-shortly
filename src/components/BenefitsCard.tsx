@@ -8,7 +8,7 @@ interface BenefitCardProps {
 export const BenefitCard = ({ title, description, image }: BenefitCardProps) => {
   return (
     <div className='flex justify-center items-center mb-20'>
-      <article className='w-80 h-80 flex flex-col  rounded bg-white-200 justify-center items-center p-6 text-center bg-slate-50'>
+      <article className='w-80 h-80 flex flex-col  rounded bg-white-200 justify-center items-center p-6 text-center bg-white shadow-xl'>
         <div className='bg-violet-950 rounded-full w-20 h-20 flex justify-center items-center -mt-24'>
           <img src={image} alt='Benefício' />
         </div>
