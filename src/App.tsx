@@ -4,12 +4,11 @@ import { useRef, useState } from 'react'
 import { BurgerMenuIcon, IlustrationWorking, Logo } from './components/Icons'
 import { ShortUrls, getShortUrl } from './services/getShortUrl'
 import { toast } from 'react-hot-toast'
+import { ShortUrlModal } from './components/ShortUrlModal'
 
 function App () {
   const inputRef = useRef<HTMLInputElement>(null)
-  const buttonRef = useRef<HTMLButtonElement>(null)
-  const shortUrlRef = useRef<HTMLParagraphElement>(null)
-  const [shortUrls, setShortUrls] = useState<ShortUrls>()
+  const [shortUrls, setShortUrls] = useState<ShortUrls[]>([])
 
   const handleGetStarted = () => {
     if (inputRef.current != null) {
@@ -22,24 +21,11 @@ function App () {
       try {
         const url = inputRef.current.value
         const res = await getShortUrl(url)
-        setShortUrls(res)
+        setShortUrls((prevShortUrls) => [...prevShortUrls, res])
       } catch (error) {
+        toast.error('Something went wrong, please try again later')
         console.log(error)
       }
-    }
-  }
-
-  const handleCopyLink = () => {
-    if (shortUrlRef.current != null) {
-      const text = shortUrlRef.current.textContent
-      if (text != null) {
-        navigator.clipboard.writeText(text)
-      }
-    }
-    if (buttonRef.current != null) {
-      buttonRef.current.textContent = 'Copied!'
-      buttonRef.current.className = 'text-white p-2 w-48 rounded cursor-pointer bg-violet-950'
-      toast.success('Copied to clipboard!')
     }
   }
 
@@ -66,14 +52,8 @@ function App () {
           <input ref={inputRef} className='rounded p-4 w-full' type='text' placeholder='Shorten a link here...' />
           <button onClick={handleShortenLink} className='bg-cyan-500 text-white p-4 w-full rounded cursor-pointer hover:bg-cyan-200'>Shorten it!</button>
         </section>
-        {(shortUrls != null) &&
-          <div className='flex flex-col bg-slate-300 m-4 rounded p-2 overflow-scroll gap-2 justify-center items-center text-center'>
-            <span>{shortUrls.original_link.length > 30 ? shortUrls.original_link.slice(0, 30) + '...' : shortUrls.original_link}</span>
-            <div className='flex flex-col gap-2 text-center items-center'>
-              <p ref={shortUrlRef} className='text-cyan-500'>{shortUrls.full_share_link}</p>
-              <button ref={buttonRef} onClick={handleCopyLink} className='bg-cyan-500 text-white p-2 w-48 rounded cursor-pointer'>Copy</button>
-            </div>
-          </div>}
+        {(shortUrls.length > 0) &&
+          <ShortUrlModal responseApi={shortUrls} />}
         <section className='mt-20'>
           <h1 className='font-black text-4xl text-center'>Advanced Statics</h1>
           <p className='text-center text-xl mt-4 text-slate-400'>Track how your links are performing across the web with our advanced statistics dashboard</p>
