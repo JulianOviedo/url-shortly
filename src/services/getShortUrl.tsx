@@ -10,12 +10,17 @@ export interface ShortUrls {
 }
 export const getShortUrl = (url: string): Promise<ShortUrls> => {
   return fetch(`https://api.shrtco.de/v2/shorten?url=${url}`)
-    .then((res: Response) => res.json())
+    .then((res: Response) => {
+      if (!res.ok) {
+        throw new Error(`Request failed with status ${res.status}`)
+      }
+      return res.json()
+    })
     .then((data: { result: ShortUrls }) => {
       return data.result
     })
     .catch((err: Error) => {
       console.log(err)
-      throw err
+      throw new Error(err.message)
     })
 }
