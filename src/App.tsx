@@ -6,6 +6,7 @@ import { ShortUrls, getShortUrl } from './services/getShortUrl'
 import { toast } from 'react-hot-toast'
 import { ShortUrlModal } from './components/ShortUrlModal'
 import { BenefitCard } from './components/BenefitsCard'
+import { Footer } from './components/Footer'
 
 function App () {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -43,7 +44,7 @@ function App () {
     <>
       <header>
         <div className='flex flex-row justify-between items-center p-4 mt-4'>
-          <Logo />
+          <Logo color='#34413D' />
           <BurgerMenuIcon />
         </div>
       </header>
@@ -71,7 +72,7 @@ function App () {
             {error.length > 0 && <p className='text-red-500 text-center'>{error}</p>}
           </div>
         </section>
-        <section className='bg-slate-100 -mt-20 absolute -z-20 pt-20'>
+        <section className='bg-slate-100 -mt-20 relative -z-20 pt-20 pb-16'>
           {(shortUrls.length > 0) &&
             <ShortUrlModal responseApi={shortUrls} />}
 
@@ -102,6 +103,8 @@ function App () {
             image='/icons/icon-fully-customizable.svg'
           />
         </section>
+
+        <Footer />
 
       </main>
     </>
