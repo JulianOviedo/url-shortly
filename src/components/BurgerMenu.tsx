@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { BurgerMenuIcon } from './Icons'
 
 export const BurgerMenu = () => {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleToggleBurgerMenu = () => {
     setIsOpen(!isOpen)
