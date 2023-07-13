@@ -16,11 +16,13 @@ export const ShortUrlModal = ({ responseApi }: ShortUrlModalProps) => {
 
     if (shortUrlRef != null) {
       const text = shortUrlRef.textContent
+      console.log('hols')
       if (text != null) {
         navigator.clipboard.writeText(text)
       }
     }
     if (buttonRef != null) {
+      console.log('qonda')
       buttonRef.textContent = 'Copied!'
       buttonRef.className = 'text-white p-2 w-48 rounded cursor-pointer bg-violet-950'
       toast.success('Copied to clipboard!')
@@ -38,7 +40,7 @@ export const ShortUrlModal = ({ responseApi }: ShortUrlModalProps) => {
           }
 
           return (
-            <div key={shortUrls.code} className='flex flex-col bg-slate-300 m-4 rounded p-2 overflow-scroll gap-2 justify-center items-center text-center'>
+            <div key={shortUrls.code} className='flex flex-col bg-slate-300 m-4 rounded p-2 overflow-scroll gap-2 justify-center items-center text-center z-10'>
               <span>
                 {shortUrls.original_link.length > 30
                   ? `${shortUrls.original_link.slice(0, 30)}...`

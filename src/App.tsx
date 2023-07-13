@@ -13,6 +13,7 @@ function App () {
   const inputRef = useRef<HTMLInputElement>(null)
   const [shortUrls, setShortUrls] = useState<ShortUrls[]>([])
   const [error, setError] = useState<string>('')
+  const [isLoading, setIsloading] = useState<boolean>(false)
 
   const handleGetStarted = () => {
     if (inputRef.current != null) {
@@ -26,10 +27,12 @@ function App () {
       const urlRegex = /^(?:\w+:)?\/\/([^\s.]+\.\S{2}|localhost[:?\d]*)\S*$/
       if (urlRegex.test(url)) {
         try {
+          setIsloading(true)
           const res = await getShortUrl(url)
           setShortUrls((prevShortUrls) => [...prevShortUrls, res])
           setError('')
           inputRef.current.value = ''
+          setIsloading(false)
         } catch (error) {
           toast.error('Something went wrong, please try again later')
           console.log(error)
@@ -50,7 +53,7 @@ function App () {
         </div>
       </header>
 
-      <main>
+      <main className='relative z-20'>
 
         <figure>
           <IlustrationWorking />
@@ -69,7 +72,7 @@ function App () {
           <img className='absolute top-0 right-0' src='/icons/bg-shorten-mobile.svg' alt='stain' />
           <div className='z-10'>
             <input ref={inputRef} className='rounded p-4 w-full mb-2' type='text' placeholder='Shorten a link here...' />
-            <button onClick={handleShortenLink} className=' bg-cyan-500 text-white p-4 w-full rounded cursor-pointer hover:bg-cyan-200'>Shorten it!</button>
+            <button onClick={handleShortenLink} className=' bg-cyan-500 text-white p-4 w-full rounded cursor-pointer hover:bg-cyan-200'>{isLoading ? 'Shorting...' : 'Shorten It'}</button>
             {error.length > 0 && <p className='text-red-500 text-center'>{error}</p>}
           </div>
         </section>
