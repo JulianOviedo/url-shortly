@@ -11,7 +11,7 @@ export const BurgerMenu = () => {
 
   return (
     <>
-      <button onClick={handleToggleBurgerMenu}>
+      <button className='md:hidden' onClick={handleToggleBurgerMenu}>
         <BurgerMenuIcon />
       </button>
       <div
