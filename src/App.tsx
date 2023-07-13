@@ -50,32 +50,36 @@ function App () {
 
       <main className='relative z-20'>
 
-        <figure className='relative -z-10 flex justify-end'>
-          <IlustrationWorking />
-        </figure>
+        <section className='md:flex md:flex-row-reverse md:justify-between md:items-center md:mt-10 lg:pl-20'>
+          <figure className='relative -z-10 flex justify-end md:w-[50%]'>
+            <IlustrationWorking />
+          </figure>
 
-        <div className='p-4 mt-10 flex flex-col'>
-          <h1 className='font-bold text-5xl text-center'>More than just shorter links</h1>
-          <p className='text-center text-xl mt-4 text-slate-400'>Build your brand's recognition and get detailed insights on how your links are performing. </p>
-        </div>
-
-        <div className='flex justify-center'>
-          <button onClick={handleGetStarted} className='bg-cyan-500 text-white p-4 px-20 rounded-full mt-6 cursor-pointer active:bg-cyan-200'>Get Started</button>
-        </div>
-
-        <section className='relative flex flex-col justify-center items-center p-4 mt-10 bg-violet-950 rounded-xl mx-6 h-40 gap-4'>
-          <img className='absolute top-0 right-0' src='/icons/bg-shorten-mobile.svg' alt='stain' />
-          <div className='z-10'>
-            <input ref={inputRef} className='rounded p-4 w-full mb-2' type='text' placeholder='Shorten a link here...' />
-            <button onClick={handleShortenLink} className=' bg-cyan-500 text-white p-4 w-full rounded cursor-pointer hover:bg-cyan-200'>{isLoading ? 'Shorting...' : 'Shorten It'}</button>
-            {error.length > 0 && <p className='text-red-500 text-center'>{error}</p>}
+          <div className='p-4 mt-10 flex flex-col items-center md:items-start md:text-start md:w-[50%] md:mt-0'>
+            <h1 className='font-bold text-5xl'>More than just shorter links</h1>
+            <p className='text-xl mt-4 text-slate-400'>Build your brand's recognition and get detailed insights on how your links are performing. </p>
+            <button onClick={handleGetStarted} className='bg-cyan-500 text-white p-4 px-12 rounded-full mt-6 cursor-pointer active:bg-cyan-200'>Get Started</button>
           </div>
         </section>
+
+        <section className='relative flex flex-col justify-center items-center p-4 mt-10 bg-violet-950 rounded-xl mx-6 h-40 gap-4'>
+
+          <img className='absolute top-0 right-0 md:hidden' src='/icons/bg-shorten-mobile.svg' alt='stain' />
+          <img className='absolute top-0 right-0 h-full hidden md:flex' src='/icons/bg-shorten-desktop.svg' alt='stain' />
+
+          <div className='z-10 md:w-full md:flex md:flex-row md:gap-8 md:items-center'>
+            <input ref={inputRef} className='rounded p-4 w-full mb-2 md:mb-0' type='text' placeholder='Shorten a link here...' />
+            <button onClick={handleShortenLink} className=' bg-cyan-500 text-white p-4 w-full md:w-48 rounded cursor-pointer hover:bg-cyan-200'>{isLoading ? 'Shorting...' : 'Shorten It'}</button>
+            {error.length > 0 && <p className='text-red-500 text-center z-20 md:hidden'>{error}</p>}
+          </div>
+          {error.length > 0 && <p className='text-red-500 text-center z-20 hidden md:flex'>{error}</p>}
+        </section>
+
         <section className='bg-slate-100 -mt-20 relative -z-20 pt-20 pb-16'>
           {(shortUrls.length > 0) &&
             <ShortUrlModal responseApi={shortUrls} />}
 
-          <section className='my-20'>
+          <section className='my-20 md:mx-44 md:my-32'>
             <h1 className='font-black text-4xl text-center'>Advanced Statics</h1>
             <p className='text-center text-xl mt-4 text-slate-400'>Track how your links are performing across the web with our advanced statistics dashboard</p>
           </section>

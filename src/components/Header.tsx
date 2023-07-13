@@ -3,7 +3,7 @@ import { Logo } from './Icons'
 
 export const Header = () => {
   return (
-    <header>
+    <header className='lg:px-20'>
       <div className='flex flex-row justify-between items-center p-4 mt-4 md:hidden'>
         <Logo color='#34413D' />
         <BurgerMenu />
