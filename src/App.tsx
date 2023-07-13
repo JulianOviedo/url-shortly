@@ -1,12 +1,13 @@
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useRef, useState } from 'react'
-import { BurgerMenuIcon, IlustrationWorking, Logo } from './components/Icons'
+import { IlustrationWorking, Logo } from './components/Icons'
 import { ShortUrls, getShortUrl } from './services/getShortUrl'
 import { toast } from 'react-hot-toast'
 import { ShortUrlModal } from './components/ShortUrlModal'
 import { BenefitCard } from './components/BenefitsCard'
 import { Footer } from './components/Footer'
+import { BurgerMenu } from './components/BurgerMenu'
 
 function App () {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -45,7 +46,7 @@ function App () {
       <header>
         <div className='flex flex-row justify-between items-center p-4 mt-4'>
           <Logo color='#34413D' />
-          <BurgerMenuIcon />
+          <BurgerMenu />
         </div>
       </header>
 
