@@ -55,7 +55,7 @@ function App () {
             <IlustrationWorking />
           </figure>
 
-          <div className='p-4 mt-10 flex flex-col items-center md:items-start md:text-start md:w-[50%] md:mt-0'>
+          <div className='p-4 mt-10 text-center flex flex-col items-center md:items-start md:text-start md:w-[50%] md:mt-0'>
             <h1 className='font-bold text-5xl'>More than just shorter links</h1>
             <p className='text-xl mt-4 text-slate-400'>Build your brand's recognition and get detailed insights on how your links are performing. </p>
             <button onClick={handleGetStarted} className='bg-cyan-500 text-white p-4 px-12 rounded-full mt-6 cursor-pointer active:bg-cyan-200'>Get Started</button>
@@ -79,32 +79,35 @@ function App () {
           {(shortUrls.length > 0) &&
             <ShortUrlModal responseApi={shortUrls} />}
 
-          <section className='my-20 md:mx-44 md:my-32'>
+          <section className='my-20 md:mx-44 md:my-32 lg:my-44'>
             <h1 className='font-black text-4xl text-center'>Advanced Statics</h1>
             <p className='text-center text-xl mt-4 text-slate-400'>Track how your links are performing across the web with our advanced statistics dashboard</p>
           </section>
 
-          <BenefitCard
-            title='Brand Recognition'
-            description='Boost your brand recognition with each click. Generic links don’t mean a thing. Branded links help instil confidence in your content.'
-            image='/icons/icon-brand-recognition.svg'
-          />
-          <div className='flex justify-center items-center relative -z-10'>
-            <div className='h-48 w-2 bg-cyan-500 absolute -z-10' />
-          </div>
-          <BenefitCard
-            title='Detailed Records'
-            description='Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.'
-            image='/icons/icon-detailed-records.svg'
-          />
-          <div className='flex justify-center items-center relative -z-10'>
-            <div className='h-48 w-2 bg-cyan-500 absolute -z-10' />
-          </div>
-          <BenefitCard
-            title='Fully Customizable'
-            description='Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.'
-            image='/icons/icon-fully-customizable.svg'
-          />
+          <section className='flex flex-col gap-20 lg:flex-row lg:justify-center'>
+            <div className='lg:-mt-24'>
+              <BenefitCard
+                title='Brand Recognition'
+                description='Boost your brand recognition with each click. Generic links don’t mean a thing. Branded links help instil confidence in your content.'
+                image='/icons/icon-brand-recognition.svg'
+              />
+            </div>
+            <div className='absolute top-[50%] left-[49.8%] lg:top-[70%] lg:left-14 -z-10'>
+              <div className='h-[800px] w-2 lg:h-2 lg:w-[800px] bg-cyan-500 absolute -z-10' />
+            </div>
+            <div className='lg:-mt-14'>
+              <BenefitCard
+                title='Detailed Records'
+                description='Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.'
+                image='/icons/icon-detailed-records.svg'
+              />
+            </div>
+            <BenefitCard
+              title='Fully Customizable'
+              description='Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.'
+              image='/icons/icon-fully-customizable.svg'
+            />
+          </section>
         </section>
 
         <Footer />

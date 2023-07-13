@@ -40,13 +40,13 @@ export const ShortUrlModal = ({ responseApi }: ShortUrlModalProps) => {
           }
 
           return (
-            <div key={shortUrls.code} className='flex flex-col bg-slate-300 m-4 rounded p-2 md:m-6 overflow-scroll gap-2 justify-center items-center text-center z-10'>
+            <div key={shortUrls.code} className='flex flex-col bg-slate-300 m-4 rounded p-2 md:m-6 overflow-scroll gap-2 justify-center items-center text-center z-10 md:flex-row md:justify-between md:px-4'>
               <span>
                 {shortUrls.original_link.length > 30
                   ? `${shortUrls.original_link.slice(0, 30)}...`
                   : shortUrls?.original_link ?? ''}
               </span>
-              <div className='flex flex-col gap-2 text-center items-center'>
+              <div className='flex flex-col gap-2 text-center items-center md:flex-row md:gap-8'>
                 <p ref={(ref) => (shortUrlRefs.current[index] = ref)} className='text-cyan-500'>
                   {shortUrls?.full_share_link}
                 </p>
