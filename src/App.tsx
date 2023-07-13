@@ -55,7 +55,7 @@ function App () {
 
       <main className='relative z-20'>
 
-        <figure>
+        <figure className='relative -z-10'>
           <IlustrationWorking />
         </figure>
 

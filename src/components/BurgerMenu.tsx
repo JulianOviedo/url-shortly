@@ -15,7 +15,7 @@ export const BurgerMenu = () => {
         <BurgerMenuIcon />
       </button>
       <div
-        className={`absolute w-80 ml-8 h-[350px] top-0 left-0 bg-violet-950 rounded-xl mt-20 text-center text-white flex flex-col items-center transition-opacity duration-700 ${
+        className={`absolute z-50 w-80 ml-8 h-[350px] top-0 left-0 bg-violet-950 rounded-xl mt-20 text-center text-white flex flex-col items-center transition-opacity duration-700 ${
             isOpen ? 'opacity-100' : 'opacity-0'
           }`}
       >
