@@ -55,7 +55,7 @@ function App () {
 
       <main className='relative z-20'>
 
-        <figure className='relative -z-10'>
+        <figure className='relative -z-10 flex justify-end'>
           <IlustrationWorking />
         </figure>
 
