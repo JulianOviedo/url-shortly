@@ -19,8 +19,8 @@ export const FooterLinks = () => {
   const socialMediaPaths = ['/icons/icon-twitter.svg', '/icons/icon-pinterest.svg', '/icons/icon-facebook.svg', '/icons/icon-instagram.svg']
 
   return (
-    <div className='bg-slate-800 flex flex-col justify-center items-center text-center'>
-      <div className='p-10'>
+    <div className='bg-slate-800 flex flex-col justify-center items-center text-center md:flex-row md:gap-16 md:py-8 md:items-start md:text-start md:justify-between md:px-20'>
+      <div className='p-10 md:py-4 md:p-0'>
         <Logo color='white' />
       </div>
       {links.map((section) => {
@@ -35,8 +35,7 @@ export const FooterLinks = () => {
           </div>
         )
       })}
-      <div />
-      <div className='m-8 flex flex-row gap-8'>
+      <div className='m-8 flex flex-row gap-8 md:m-0 md:my-4'>
         {socialMediaPaths.map(paths => {
           return (
             <img className='cursor-pointer' src={paths} alt={paths} key={paths} />
